@@ -1,0 +1,33 @@
+{ "name": "export-module-csv-files-sync-pmb",
+  "version": "1.0.0",
+  "description": "Turn your collection of CSV files into a node module that exports them.",
+  "keywords": [],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/export-module-csv-files-sync-pmb-js/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/export-module-csv-files-sync-pmb-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/export-module-csv-files-sync-pmb-js/issues"
+  },
+  "contributors": [],
+
+  "private": false, "license": "ISC",
+
+  "main": "impl.js",
+  "scripts": { "test": "nodejs test/all.js" },
+  "directories": { "test": "test" },
+
+  "dependencies": {
+    "csv-parse": "^1.2.1",
+    "glob": "^7.1.1"
+  },
+  "devDependencies": {
+    "equal-pmb": "^0.1.6"
+  },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}
