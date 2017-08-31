@@ -1,5 +1,5 @@
 { "name": "export-module-csv-files-sync-pmb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn your collection of CSV files into a node module that exports them.",
   "keywords": [],
 

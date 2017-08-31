@@ -73,7 +73,7 @@ EX.readParseSrcFiles = function (srcFiles, opt) {
   srcFiles.sort().forEach(function (subFn) {
     var key = subFn, csv;
     if (fn2key) {
-      key = fn2key(subFn);
+      key = fn2key(subFn, opt, srcFiles);
       if ((key === null) || (key === undefined)) { return; }
       key = String(key);
     }
