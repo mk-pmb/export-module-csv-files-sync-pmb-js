@@ -9,6 +9,7 @@ var EX, obAss = Object.assign, objHas = Object.prototype.hasOwnProperty,
   dfltOpt = require('./cfg.default.js');
 
 function ifFun(x, d) { return ((typeof x) === 'function' ? x : d); }
+function isStr(x, no) { return (((typeof x) === 'string') || no); }
 function fail(why) { throw new Error(why); }
 function throwIf(err) { if (err) { throw err; } }
 function str_isin(needle, hay) { return (hay.indexOf(needle) >= 0); }
@@ -22,15 +23,21 @@ EX = function (opt) {
   if (!opt) { fail('need at least a srcPath'); }
   opt = EX.mergeOpt(opt);
   var oMod = (opt.module || false), srcFiles, allData;
-  delete opt.module;
+  if (oMod) {
+    delete opt.module;
+  } else {
+    if (ifFun(opt.require) && isStr(opt.filename)) {
+      oMod = opt;
+      opt = false;
+    }
+  }
   if (!opt.srcPath) {
     if (oMod.filename) { opt.srcPath = pathLib.dirname(oMod.filename); }
     if (!opt.srcPath) { fail('missing srcPath'); }
   }
-  if (!opt.pkgName) {
-    opt.pkgName = pathLib.basename(opt.srcPath);
-    if (!opt.pkgName) { fail('Unable to guess missing option pkgName'); }
-  }
+  if (!opt.pkgName) { opt.pkgName = oMod.require('./package.json').name; }
+  if (!opt.pkgName) { opt.pkgName = pathLib.basename(opt.srcPath); }
+  if (!opt.pkgName) { fail('Unable to guess missing option pkgName'); }
 
   srcFiles = EX.findSrcFiles(opt);
   allData = EX.readParseSrcFiles(srcFiles, opt);
