@@ -21,7 +21,7 @@
   "directories": { "test": "test" },
 
   "dependencies": {
-    "csv-parse": "^1.2.1",
+    "csv-parse": "^4.6.3",
     "glob": "^7.1.1"
   },
   "devDependencies": {
